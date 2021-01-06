@@ -43,7 +43,9 @@ extern "C" {
 #define index(a, b)     strchr(a, b)
 #define rindex(a, b)    strrchr(a, b)
 
+#ifndef strncasecmp
 #define strncasecmp(s1, s2, count)        _strnicmp(s1, s2, count)
+#endif
 
 #define close _close
 #define unlink _unlink
