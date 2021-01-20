@@ -281,10 +281,9 @@ parse_pci_hardware_id(const char *buf, struct rte_pci_id *pci_id)
 	if (ids != 3)
 		return -1;
 
-	/* Find PCI 6 digit class ID as &CC_xxxxxx */
+	/* Try and find PCI class ID */
 	for (cp = buf; !(cp[0] == 0 && cp[1] == 0); cp++)
 		if (*cp == '&' && strncmp(cp, "&CC_", 4) == 0 &&
-				strspn(cp + 4, "0123456789abcdefABCDEF") == 6 &&
 				sscanf_s(cp, "&CC_%" PRIx32, &class_id) == 1)
 			break;
 
